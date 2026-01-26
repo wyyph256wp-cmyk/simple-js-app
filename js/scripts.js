@@ -10,7 +10,11 @@ let pokemonRepository = (function () {
         return pokemonList;
     }
     function add(pokemon) {
-        pokemonList.push(pokemon);
+        if (typeof pokemon === 'object') {
+            pokemonList.push(pokemon);
+        } else {
+            console.log('Only objects can be added!');
+        }
     }
     return {
         getAll: getAll,
