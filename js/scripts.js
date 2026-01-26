@@ -10,10 +10,15 @@ let pokemonRepository = (function () {
         return pokemonList;
     }
     function add(pokemon) {
-        if (typeof pokemon === 'object') {
+        if (typeof pokemon === 'object' &&
+            Object.keys(pokemon).length === 3 &&
+            Object.keys(pokemon).includes('name') &&
+            Object.keys(pokemon).includes('height') &&
+            Object.keys(pokemon).includes('types')
+        ) {
             pokemonList.push(pokemon);
         } else {
-            console.log('Only objects can be added!');
+            console.log('Only objects with name, height, and types can be added!');
         }
     }
     return {
