@@ -38,10 +38,18 @@ let pokemonRepository = (function () {
 
 // Display each Pokémon's name and height on the webpage using forEach
 pokemonRepository.getAll().forEach(function (pokemon) {
+    let pokemonList = document.querySelector('.pokemon-list');
+    let listItem = document.createElement('li');
+    let button = document.createElement('button');
+    button.innerText = pokemon.name;
+    button.classList.add('pokemon-button');
+    listItem.appendChild(button);
+    pokemonList.appendChild(listItem);
+
     // Check if the Pokémon's height is greater than 15
-    if (pokemon.height > 15) {
-        document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ')' + ' - Wow, that\'s big!' + '</p>');
-    } else {
-        document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ')' + '</p>');
-    }
+    // if (pokemon.height > 15) {
+    //     document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ')' + ' - Wow, that\'s big!' + '</p>');
+    // } else {
+    //     document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ')' + '</p>');
+    // }
 }); 
