@@ -21,9 +21,19 @@ let pokemonRepository = (function () {
             console.log('Only objects with name, height, and types can be added!');
         }
     }
+    function addListItem(pokemon) {
+        let pokemonList = document.querySelector('.pokemon-list');
+        let listItem = document.createElement('li');
+        let button = document.createElement('button');
+        button.innerText = pokemon.name;
+        button.classList.add('pokemon-button');
+        listItem.appendChild(button);
+        pokemonList.appendChild(listItem);
+    }
     return {
         getAll: getAll,
-        add: add
+        add: add,
+        addListItem: addListItem
     };
 })();
 
@@ -38,13 +48,7 @@ let pokemonRepository = (function () {
 
 // Display each Pokémon's name and height on the webpage using forEach
 pokemonRepository.getAll().forEach(function (pokemon) {
-    let pokemonList = document.querySelector('.pokemon-list');
-    let listItem = document.createElement('li');
-    let button = document.createElement('button');
-    button.innerText = pokemon.name;
-    button.classList.add('pokemon-button');
-    listItem.appendChild(button);
-    pokemonList.appendChild(listItem);
+    pokemonRepository.addListItem(pokemon);
 
     // Check if the Pokémon's height is greater than 15
     // if (pokemon.height > 15) {
